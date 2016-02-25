@@ -38,9 +38,6 @@ int main(int argc, char* argv[])
     ifstream inFILE(std::string(std::string(modelName) + ".eml").c_str(), ios::binary);
 
     t_eml_header h;
-    //h.format[0] = 'e';
-    //h.format[1] = 'm';
-    //h.format[2] = 'l';
     h.format = EMLHEADER;
     h.version = 1.0;
     h.numLumps = 1;
@@ -109,7 +106,9 @@ int main(int argc, char* argv[])
     FILE.close();
 
     ///The following code Opens the file and outputs all the content
+    ///Should not be used for production
 #ifdef PROGRAM_DEBUG
+
         t_eml_header* h3 = new t_eml_header[1];
         t_Lumps lumps[3];
         t_Vertex* vert2 = new t_Vertex[model->meshes.at(0).vertices.size()];
